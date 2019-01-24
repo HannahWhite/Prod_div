@@ -112,9 +112,6 @@ orig.df <- data.frame(evi.mean = vasc.env$evi.mean, pr.full = as.numeric(pr.full
 p1 <- p1 + geom_point(data = orig.df, mapping = aes(x = evi.mean, y = pr.full))
 
 
-#pdf('G:\\Postdoc Grassland Resilience\\Conferences\\Ghent 2017\\Graphics\\full_mod_mean.pdf')
-#p1
-#dev.off()
 
 
 
@@ -165,9 +162,7 @@ orig.df <- data.frame(evi.sd = vasc.env$evi.sd, pr.full = as.numeric(pr.full))
 p1.sd <- p1.sd + geom_point(data = orig.df, mapping = aes(x = evi.sd, y = pr.full))
 
 
-#pdf('G:\\Postdoc Grassland Resilience\\Conferences\\Ghent 2017\\Graphics\\full_mod_spatial.pdf')
-#p1.sd
-#dev.off()
+
 
 
 ### inter.evi.sd
@@ -263,9 +258,7 @@ p1.annualsd <- p1.annualsd + geom_point(data = orig.df, mapping = aes(x = annual
 plot_grid(p1, p1.sd, p1.intersd, p1.annualsd, nrow = 2, ncol = 2)
 
 
-tiff('G:\\Postdoc Grassland Resilience\\Graphics\\Productivity-Diversity\\Publication and Poster\\Fig1large.tiff', height = 14, width = 14, units = 'in', res = 300)
-plot_grid(p1, p1.sd, p1.intersd, p1.annualsd, nrow = 2, ncol = 2)
-dev.off()
+
 
 ################################################################################
 ####### Productivity-diversity model smoothed by three levels of habitat #######
@@ -437,13 +430,7 @@ p.nice <- p.nice + geom_point(data = orig.dfP[orig.dfP$dom=='P',], mapping = aes
 
 p.nice <- p.nice + theme(axis.title = element_text(size = 25), axis.text = element_text(size = 20), legend.position = 'none') 
 
-#pdf('G:\\Postdoc Grassland Resilience\\Conferences\\Ghent 2017\\Graphics\\mean_EVI_hetero.pdf')
-#p.nice
-#dev.off()
 
-tiff('G:\\Postdoc Grassland Resilience\\Graphics\\Productivity-Diversity\\Publication and Poster\\Fig2.tiff', width = 14, height = 14, units = 'in', res = 300)
-p.nice
-dev.off()
 
 
 ##### EVI sd
@@ -599,9 +586,7 @@ p.nice.sd <- p.nice.sd + geom_point(data = orig.dfP[orig.dfP$dom=='P',], mapping
 
 p.nice.sd <- p.nice.sd + theme(axis.title = element_text(size = 25), axis.text = element_text(size = 20), legend.position = 'none') 
 
-tiff('G:\\Postdoc Grassland Resilience\\Graphics\\Productivity-Diversity\\Publication and Poster\\Fig3.tiff', width = 14, height = 14, units = 'in', res = 300)
-p.nice.sd
-dev.off()
+
 
 
 ##### Interannual sd
@@ -757,15 +742,6 @@ p.nice.inter <- p.nice.inter + geom_point(data = orig.dfP[orig.dfP$dom=='P',], m
 
 p.nice.inter <- p.nice.inter + theme(axis.title = element_text(size = 25), axis.text = element_text(size = 20), legend.position ='none') 
 
-tiff('G:\\Postdoc Grassland Resilience\\Graphics\\Productivity-Diversity\\Publication and Poster\\Fig4.tiff', width = 14, height = 14, units = 'in', res = 300)
-p.nice.inter
-dev.off()
-
-
-
-tiff('G:\\Postdoc Grassland Resilience\\Graphics\\Productivity-Diversity\\Publication and Poster\\FigAll2.tiff', width = 14, height = 14, units = 'in', res = 300)
-plot_grid(p.nice, p.nice.sd, p.nice.inter, nrow = 2, ncol = 2)
-dev.off()
 
 
 
