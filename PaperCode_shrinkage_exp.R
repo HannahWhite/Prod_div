@@ -25,7 +25,7 @@ dominant <- function (x, threshold) {
   ifelse(max(x) >=threshold, names(which.max(x)), 'Heterogenous') 
 }
 
-vasc.env$dom50 <- apply(vasc.env[,52:66], 1, function(x) dominant(x, threshold = 0.5))
+vasc.env$dom50 <- apply(vasc.env[,8:22], 1, function(x) dominant(x, threshold = 0.5))
 
 vasc.env$hetero.dom50 <- ifelse(vasc.env$dom50 == 'Heterogenous', 'H', 'N')
 
