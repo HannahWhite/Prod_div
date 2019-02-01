@@ -24,17 +24,7 @@ library(plyr)
 ### Read in data
 
 
-vasc.env <- read.csv('G:/Postdoc Grassland Resilience/Species richness/vasc.env.csv', header = TRUE)
-
-# Add land cover data
-
-corine.agg <- read.csv('G:\\Postdoc Grassland Resilience\\LandCoverData\\corine.agg.csv', header = TRUE)
-corine.agg$east <- corine.agg$east + 5000
-corine.agg$north <- corine.agg$north + 5000
-
-# merge dataframes
-vasc.env <- merge(vasc.env, corine.agg, by = c('east', 'north', 'dom'), all.x = TRUE, all.y = TRUE)
-
+vasc.env <- read.csv('vascular_evi.csv', header = TRUE)
 
 
 ## dominant habitat function
@@ -42,7 +32,7 @@ dominant <- function (x, threshold) {
   ifelse(max(x) >=threshold, names(which.max(x)), 'Heterogenous') 
 }
 
-vasc.env$dom50 <- apply(vasc.env[,52:66], 1, function(x) dominant(x, threshold = 0.5))
+vasc.env$dom50 <- apply(vasc.env[,8:22], 1, function(x) dominant(x, threshold = 0.5))
 
 vasc.env$hetero.dom50 <- ifelse(vasc.env$dom50 == 'Heterogenous', 'H', 'N')
 
