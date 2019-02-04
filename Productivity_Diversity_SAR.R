@@ -42,9 +42,11 @@ vasc.env$pasture.dom50 <- ifelse(vasc.env$dom50 == 'Pasture', 'P', 'N')
 vasc.env$hetpast <- ifelse(vasc.env$dom50 == 'Heterogenous', 'H',
                            ifelse(vasc.env$dom50 == 'Pasture', 'P', 'N'))
 
+## Calculate area of hectad which isn't pasture                       
+                        
 vasc.env$non.past <- 1 - vasc.env$Pasture
 
-vasc.env$non.past.area <- 100*vasc.env$non.past
+vasc.env$non.past.area <- 100*vasc.env$non.past 
 
 
 
@@ -52,7 +54,7 @@ vasc.env$non.past.area <- 100*vasc.env$non.past
 
 #### Allow GAM to smooth area term
 
-
+# Model not smoothed by landcover
 
 m.full.area2 <- 
   gamm(nat.fres ~ s(evi.mean,  bs = 'cs', k = -1) + 
@@ -66,7 +68,7 @@ m.full.area2 <-
 
 ## AIC = 6733.796
 
-
+# Landcover model
 
 m.full.dom3level.area2 <- gamm(nat.fres ~ s(evi.mean,  bs = 'cs', by = as.factor(hetpast), k = -1) + 
                                 s(evi.sd, bs = 'cs', by = as.factor(hetpast), k = -1) +
@@ -77,31 +79,5 @@ m.full.dom3level.area2 <- gamm(nat.fres ~ s(evi.mean,  bs = 'cs', by = as.factor
                               correlation = corExp(form = ~ east + north), data = vasc.env, 
                               method = 'ML', control = lmeControl(opt = 'optim')) 
 ## AIC = 6745.789
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
