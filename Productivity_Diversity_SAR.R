@@ -48,9 +48,6 @@ vasc.env$non.past.area <- 100*vasc.env$non.past
 
 
 
-rm(corine.agg)
-
-
 
 
 #### Allow GAM to smooth area term
